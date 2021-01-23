@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="border border-danger">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 mx-auto form-login mb-5">
+        <%= form_for(@unit) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :rotation %>
+        <%= f.text_field :rotation %>
+        <%= f.label :packaging %>
+        <%= f.text_field :packaging %>
+        <%= f.label :fridge %>
+        <%= f.text_field :fridge %>
+        <%= f.label :rack %>
+        <%= f.text_field :rack, as: :boolean %>
+        <%= f.label :owc %>
+        <%= f.text_field :owc, as: :boolean %>
+        <%= f.label :oc %>
+        <%= f.text_field :oc %>
+        <%= f.label :mixed %>
+        <%= f.text_field :mixed %>
+        <%= f.submit %>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>

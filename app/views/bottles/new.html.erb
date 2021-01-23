@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="border border-danger">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 mx-auto form-login mb-5">
+        <%= simple_form_for (@bottle) do |f| %>
+        <div>
+        <%= f.association :wine, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+        <%= f.association :unit, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+        </div>
+        <div>
+        <%= f.label :date_in %>
+        <%= f.text_field :date_in %>
+        </div>
+        <div>
+        <%= f.label :number %>
+        <%= f.text_field :number %>
+        </div>
+        <div>
+        <%= f.label :vintage %>
+        <%= f.text_field :vintage %>
+        </div>
+        <div>
+        <%= f.label :size %>
+        <%= f.text_field :size %>
+        </div>
+        <div>
+        <%= f.label :pre_tax_cost %>
+        <%= f.text_field :pre_tax_cost %>
+        </div>
+        <div>
+        <%= f.label :duty %>
+        <%= f.text_field :duty %>
+        </div>
+        <div>
+        <%= f.label :vat %>
+        <%= f.text_field :vat %>
+        </div>
+        <div>
+        <%= f.label :post_tax_cost %>
+        <%= f.text_field :post_tax_cost %>
+        </div>
+        <div>
+        <%= f.label :tax_status %>
+        <%= f.text_field :tax_status %>
+        <%= f.submit %>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>

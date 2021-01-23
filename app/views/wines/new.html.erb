@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="border border-danger">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 mx-auto form-login mb-5">
+        <%= simple_form_for (@wine) do |f| %>
+        <div>
+        <%= f.association :producer, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+        </div>
+        <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        </div>
+        <div>
+        <%= f.label :nickname %>
+        <%= f.text_field :nickname %>
+        </div>
+        <div>
+        <%= f.label :color %>
+        <%= f.text_field :color %>
+        </div>
+        <div>
+        <%= f.label :country %>
+        <%= f.text_field :country %>
+        </div>
+        <div>
+        <%= f.label :region %>
+        <%= f.text_field :region %>
+        </div>
+        <div>
+        <%= f.label :subregion %>
+        <%= f.text_field :subregion %>
+        </div>
+        <div>
+        <%= f.label :latitude %>
+        <%= f.text_field :latitude %>
+        </div>
+        <div>
+        <%= f.label :longitude %>
+        <%= f.text_field :longitude %>
+        </div>
+        <%= f.submit %>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>

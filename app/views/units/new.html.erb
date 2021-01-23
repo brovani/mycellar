@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="border border-danger">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 mx-auto form-login mb-5">
+        <%= simple_form_for (@unit) do |f| %>
+        <div>
+        <%= f.association :place, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+        </div>
+        <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        </div>
+        <div>
+        <%= f.label :bottles_inside %>
+        <%= f.text_field :bottles_inside %>
+        </div>
+        <div>
+        <%= f.label :fridge %>
+        <%= f.text_field :fridge %>
+        </div>
+        <div>
+        <%= f.label :rack %>
+        <%= f.text_field :rack %>
+        </div>
+        <div>
+        <%= f.label :mixed %>
+        <%= f.text_field :mixed %>
+        </div>
+        <div>
+        <%= f.label :owc %>
+        <%= f.text_field :owc %>
+        </div>
+        <div>
+        <%= f.label :oc %>
+        <%= f.text_field :oc %>
+        </div>
+        <%= f.submit %>
+        <% end %>
+
+        </div>
+    </div>
+  </div>
+</div>
+

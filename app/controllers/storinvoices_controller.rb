@@ -1,0 +1,2 @@
+class StorinvoicesController < ApplicationController
+end

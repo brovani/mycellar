@@ -1,0 +1,58 @@
+
+<div class="container">
+  <div class="border border-danger">
+        <%= simple_form_for(@bottle) do |f| %>
+        <div>
+        <%= f.association :wine, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+        <%= f.association :unit, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+        </div>
+        <div>
+        <%= f.label :date_in %>
+        <%= f.text_field :date_in %>
+        </div>
+        <div>
+        <%= f.label :number %>
+        <%= f.text_field :number %>
+        </div>
+        <div>
+        <%= f.label :vintage %>
+        <%= f.text_field :vintage %>
+        </div>
+        <div>
+        <h2> COST </h2>
+        <%= f.label :pre_tax_cost %>
+        <%= f.text_field :pre_tax_cost %>
+        </div>
+        <div>
+        <%= f.label :duty %>        
+        <%= f.text_field :duty %>
+        </div>
+        <div>
+        <%= f.label :vat %>
+        <%= f.text_field :vat %>
+        </div>
+        <div>
+        <%= f.label :post_tax_cost %>
+        <%= f.text_field :post_tax_cost %>
+        </div>
+        <div>
+        <h2> SIZE </h2>
+        <%= f.label :half_bottle %>
+        <%= f.text_field :half_bottle %>
+        </div>
+        <div>
+        <%= f.label :bottle %>
+        <%= f.text_field :bottle %>
+        </div>
+        <div>
+        <%= f.label :magnum %>
+        <%= f.text_field :magnum %>
+        </div>
+        <div>
+        <%= f.label :double_magnum %>
+        <%= f.text_field :double_magnum %>
+        </div>
+        <%= f.submit %>
+        <% end %>
+  </div>
+</div>

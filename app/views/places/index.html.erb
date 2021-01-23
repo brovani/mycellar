@@ -1,0 +1,73 @@
+<div class="container">
+
+    <% if any_non_professional_storage? %>
+    <h2> Local Cellars </h2>
+    <div class="border border-danger">
+        <table class="table-sm table-striped table-hover">
+        <thead>
+            <tr>
+            <th scope="col"> Storage name </th>
+            <th scope="col"> Wines </th>
+            <th scope="col"> Price Paid </th>
+            <th scope="col"> Value </th>
+            <th scope="col"> Difference </th>
+            <th scope="col"> Actions </th>
+            </tr>
+        </thead>
+            <tbody>
+            <% @places_overview.each do |place_overview| %>
+                <tr>
+                    <% if !place_overview[0].professional? %>
+                    <td> <%= link_to place_overview[0].name, place_path(place_overview[0]) %> </td>
+                    <td>   </td>
+                    <td>  <%= place_overview[1] %></td>
+                    <td>  </td>
+                    <td>  </td>
+                    <td> <%= link_to 'Update', edit_place_path(place_overview[0]), class: "btn btn-outline-secondary"%>
+                    <%= link_to "Remove", place_path(@place), method: :delete,  data: { confirm: "Are you sure?"}, class: "btn btn-outline-secondary" %>
+                    </td>
+                    </tr>
+                    <% end %>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+    <% end %>
+
+    <% if any_professional_storage? %>
+    <h2> Remote Cellars </h2>
+    <div class="border border-danger">
+        <table class="table-sm table-striped table-hover">
+        <thead>
+            <tr>
+            <th scope="col"> Storage name </th>
+            <th scope="col"> Wines </th>
+            <th scope="col"> Price Paid </th>
+            <th scope="col"> Value </th>
+            <th scope="col"> Difference </th>
+            <th scope="col"> Action </th>
+            </tr>
+        </thead>
+            <tbody>
+            <% @places_overview.each do |place_overview| %>
+                <tr>
+                    <% if place_overview[0].professional? %>
+                    <td> <%= link_to place_overview[0].name, place_path(place_overview[0]) %> </td>
+                    <td>  </td>
+                    <td> <%= place_overview[1] %></td>
+                    <td>  </td>
+                    <td>  </td>
+                    <td> <%= link_to 'Update', edit_place_path(place_overview[0]), class: "btn btn-outline-secondary"%> </td>
+                </tr>
+                    <% end %>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+    <% end %>
+
+    <div class="border border-primary justify-content-center">
+    <h2> Map (on/off) </h2>
+    </div>
+
+</div>

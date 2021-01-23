@@ -1,0 +1,30 @@
+
+<div class="container">
+
+    <div>
+    <%= link_to "Add a Producer", new_producer_path(@producer), class: "btn btn-outline-secondary" %>
+    </div>
+
+    <div class="border border-danger">
+        <table class="table-sm table-striped table-hover">
+        <thead>
+            <tr>
+            <th scope="col"> Producer </th>
+            <th scope="col"> Actions </th>
+            </tr>
+        </thead>
+            <tbody>
+            <tr>
+            <% @producers.each do |producer| %>
+            <td> <%= producer.name %> </td>
+            <td>
+            <%= link_to "Update", edit_producer_path(producer), class: "btn btn-outline-secondary" %>
+            <%= link_to "Remove", producer_path(producer), method: :delete,  data: { confirm: "Are you sure?"}, class: "btn btn-outline-secondary" %> 
+            </td>
+            </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+
+<div>

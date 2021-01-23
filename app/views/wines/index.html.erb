@@ -1,0 +1,149 @@
+<div class="container">
+
+    <div class="border border-primary">
+            <table class="table-sm table-striped table-hover">
+            <thead>
+            <tr>
+            <th scope="col"> Name </th>
+            <th scope="col"> Color </th>
+            <th scope="col"> Country </th>
+            <th scope="col"> Region </th>
+            <th scope="col"> Subregion </th>
+            <th scope="col"> Actions </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <% @wines.each do |wine| %>
+            <td> <%= wine.name %> </td>
+            <td> <%= wine.color %> </td>
+            <td> <%= wine.country %> </td>
+            <td> <%= wine.region %> </td>
+            <td> <%= wine.subregion %> </td>
+            <td> <%= link_to 'Update', edit_wine_path(wine), class: "btn btn-outline-secondary"%>
+            <%= link_to "Remove", wine_path(wine), method: :delete,  data: { confirm: "Are you sure?"}, class: "btn btn-outline-secondary" %>
+            </tr>
+            <% end %>
+            </tbody>
+            </table>
+        </div>
+
+    <div class="border border-primary justify-content-center">
+        <h2> Wines in all cellars </h2>
+    </div>
+    
+    <div class="d-flex justify-content-center">
+
+        <div class="border border-danger">
+            <table class="table-sm table-striped table-hover">
+            <thead>
+            <tr>
+            <th scope="col"> Wines </th>
+            <th scope="col"> Vintages </th>
+            <th scope="col"> Local Cellars </th>
+            <th scope="col"> Remote Cellars </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <% @wines_overview.each do |wine_overview| %>
+            <td> <%= link_to wine_overview[0].name, wine_path(wine_overview[0].id) %> </td>
+            <td> <%= wine_overview[1].join(', ') %> </td>
+            <td> <%= wine_overview[2].join(', ') %> </td>
+            <td> <%= wine_overview[3].join(', ') %> </td>
+            </tr>
+             <% end %>
+            </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="border border-primary justify-content-center">
+        <h2> Regions in all cellars </h2>
+    </div>
+
+        <div class="border border-danger">
+            <table class="table-sm table-striped table-hover">
+            <thead>
+            <tr>
+            <th scope="col"> Region </th>
+            <th scope="col"> Vintages </th>
+            <th scope="col"> Local Cellars </th>
+            <th scope="col"> Remote Cellars </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <% @regions_overview.each do |region_overview| %>
+            <td> <%= region_overview[0] %> </td>
+            <td> <%= region_overview[1].join(', ') %></td>
+            <td> <%= region_overview[2].join(', ') %> </td>
+            <td> <%= region_overview[3].join(', ') %> </td>
+            </tr>
+             <% end %>
+            </tbody>
+            </table>
+        </div>
+
+    <div class="border border-primary justify-content-center">
+        <h2> Subregions in all cellars </h2>
+    </div>
+
+        <div class="border border-danger">
+            <table class="table-sm table-striped table-hover">
+            <thead>
+            <tr>
+            <th scope="col"> Subregion </th>
+            <th scope="col"> Vintages </th>
+            <th scope="col"> Local Cellars </th>
+            <th scope="col"> Remote Cellars </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+           <% @subregions_overview.each do |subregion_overview| %>
+            <td> <%= subregion_overview[0] %> </td>
+            <td> <%= subregion_overview[1].join(', ') %></td>
+            <td> <%= subregion_overview[2].join(', ') %> </td>
+            <td> <%= subregion_overview[3].join(', ') %> </td>
+            </tr>
+             <% end %>
+            </tbody>
+            </table>
+        </div>
+
+    <div class="border border-primary justify-content-center">
+        <h2> Vintages in all cellars </h2>
+    </div>
+
+        <div class="border border-danger">
+            <table class="table-sm table-striped table-hover">
+            <thead>
+            <tr>
+            <th scope="col"> Vintages </th>
+            <th scope="col"> Region </th>
+            <th scope="col"> Subregion </th>
+            <th scope="col"> Local Cellars </th>
+            <th scope="col"> Remote Cellars </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+           <% @all_vintages_in_cellar.each do |vintage| %>
+            <td> <%= vintage %> </td>
+            <td>  </td>
+            <td>  </td>
+            <td>  </td>
+            </tr>
+            <%end%>
+            </tbody>
+            </table>
+        </div>
+
+
+    <div class="border border-primary justify-content-center">
+        <h2> Map with the wines' provenance</h2>
+    </div>
+
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="border border-danger">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 mx-auto form-login mb-5">
+        <%= simple_form_for (@place) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :account_number %>
+        <%= f.text_field :account_number %>
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+        <%= f.submit %>
+        <% end %>
+         </div>
+    </div>
+  </div>
+</div>

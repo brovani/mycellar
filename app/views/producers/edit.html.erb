@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="border border-danger">
+    <%= simple_form_for(@producer) do |f| %>
+    <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+    <%= f.submit %>
+    <% end %>
+   </div>
+</div>

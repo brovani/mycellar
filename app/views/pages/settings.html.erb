@@ -1,0 +1,61 @@
+<div class="container">
+
+    <div class="border border-danger">
+        <table class="table-sm table-striped table-hover">
+        <thead>
+            <tr>
+            <th scope="col"> Type </th>
+            <th scope="col"> Action </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> Remote Cellars </td>
+                <td> Login details </td>
+            </tr>
+            <tr>
+                <td> Subscriptions </td>
+                <td> Login details </td>
+            </tr>
+            <tr>
+                <td> Social Media </td>
+                <td> Login details </td>
+            </tr>
+            <tr>
+                <td> Local Cellars  </td>
+                <td> <%= link_to "Add", new_place_path(@place), class: "btn btn-outline-secondary" %>
+                <%= link_to "Remove", method: :delete,  data: { confirm: "Are you sure?"}, class: "btn btn-outline-secondary" %> </td>
+            </tr>
+            <tr>
+                <td> Cases </td>
+                <td> <%= link_to "Add", new_unit_path(@place), class: "btn btn-outline-secondary" %></td>
+            </tr>
+            <tr>
+                <td> Wine fridges </td>
+                <td> <%= link_to "Add", new_unit_path(@place), class: "btn btn-outline-secondary" %></td>
+            </tr>
+            <tr>
+                <td> Wine Racks </td>
+                <td> <%= link_to "Add", new_unit_path(@place), class: "btn btn-outline-secondary" %> </td>
+            </tr>
+            <tr>   
+                <td> Producers  </td>
+                <td> <%= link_to "Add", new_producer_path(@producer), class: "btn btn-outline-secondary" %> </td>
+            </tr>
+            <tr>
+                <td> Wines  </td>
+                <td> <%= link_to "Add", new_wine_path(@wine), class: "btn btn-outline-secondary" %> </td>
+            </tr>
+            <tr>
+                <td> Bottles  </td>
+                <td> <%= link_to "Add", new_bottle_path(@bottle), class: "btn btn-outline-secondary" %> </td>
+            </tr>
+            <tr>
+                <td> Default page  </td>
+                <td>  </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

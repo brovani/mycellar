@@ -1,2 +1,148 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="banner" style="background-image: linear-gradient(354deg, rgba(179,174,238,0.6964986678265056) 0%, rgba(148,187,233,1) 100%), url()">
+  <div class="containter overflow-hidden">
+    <div class="row">
+      <div class="col col-md-3">
+      </div>
+      <div class="col col-md-6 col-sm-10 text-white py-5">
+        <h1 class="display-6">Welcome to Automated Cellar</h1>
+        <p class="lead">Focus on enjoying wine, not managing the cellar</p>
+        <p>Automated Cellar is an ambitious start-up bringing automation to the management of a wine cellar for collectors and professionals with several cellars or several storages.</p>
+        <hr class="my-4">
+        <%= link_to places_path do %>
+          <button class="btn btn-primary" data-turbolinks="false">Register for free</button>
+        <% end %>
+      </div>
+      <div class="col col-md-3">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  
+  <div class="row align-items-center">
+    <div class="col col-md-1">
+    </div>
+    <div class="col col-md-5 col-sm-10 my-5">
+      <h2>How does the automation work ?</h2>
+      <p> Automatisation works when the wine enters the cellar:</p>
+      <p>Enter your login and password. This is exactly what you would to set-up your mailboxes on your smartphone.</p>
+      <p>Wine stored in professional storages or merchants' reserves are downloaded automatically once you have stored your login credentials </p>
+      <% if !user_signed_in? %>
+        <%= link_to new_user_session_path do %>
+          <button class="btn btn-dark">Sign in</button>
+        <% end %>
+       <% else %>
+       <%= link_to places_path do %>
+          <button class="btn btn-primary" data-turbolinks="false">Register for free</button>
+       <% end %>
+      <% end %>
+    </div>
+    <div class="col col-md-5 col-sm-10">
+      <img src=""
+           alt=""
+           width="100%"
+           class="shadow rounded"
+           >
+    </div>
+    <div class="col col-md-1">
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row align-items-center">
+    <div class="col col-md-1">
+    </div>
+    <div class="col col-md-5 col-sm-10 my-5">
+      <img src=""
+                alt=""
+                width="100%"
+                class="shadow rounded"
+              >
+     </div>
+    <div class="col col-md-5 col-sm-10 my-5">
+      <h2>Upload an invoice and the app will extract the data for your validation</h2>
+      <p>We have tried to fix what we thought was wrong with other wine cellar management softwares.</p>
+    </div>
+     <div class="col col-md-1">
+     </div>
+  </div>
+
+  <hr>
+
+  <div class="row align-items-center">
+    <div class="col col-md-1">
+    </div>
+    <div class="col col-sm-12 my-md-5">
+      <h2 class="text-center">The app enables to view the position of the bottles in wine racks or a wine fridge and move it so the app corresponds to the situation in the cellar.</h2>
+      <div class="d-flex justify-content-center my-3">
+        <%# <% @places.each do |place| %>
+        <%# 
+          <div class="card mx-md-3 mx-sm-1 mt-3" style="width: 18rem;">
+            <img src="<%= place.photo class="card-img-top" %>
+            <%# <div class="card-body">
+              <h5 class="card-title"><%= place.name %></h5>
+              <%# <%= link_to "More info", place_path(place), class: "btn btn-primary" %>
+
+            <%# </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col col-md-1">
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row align-items-center">
+    <div class="col col-md-1">
+    </div>
+    
+    <div class="col col-sm-10 my-5">
+    <h2 class="text-center">What we are and we are not</h2>
+      <div class="d-flex flex-column justify-content-center my-3">
+        
+        <div class="row mt-3">
+          <div class="col col-2">
+            <i class="fas fa-wifi" style="font-size: 50px"></i>
+          </div>
+          <div class="col">
+            <p>This is a wine management tool of the modern digital age for amateurs and sommeliers with multiple cellars.</p>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col col-2">
+            <i class="fas fa-mug-hot" style="font-size: 50px"></i>
+          </div>
+          <div class="col">
+            <p>We are not a software company and not selling a software that you need to input data into. We are selling a tool that saves time by automation. Wine data dissimenated on the web is fetched and consolidated it in one place. We are not selling a wine database, we offer the tools to find the information.</p>
+          </div>
+
+      </div>
+
+      <div class="row mt-3">
+        <div class="col col-2">
+          <i class="fas fa-desktop" style="font-size: 50px"></i>
+        </div>
+        <div class="col">
+          <p>Automated cellar </p>
+        </div>
+      </div>
+
+      <div class="row mt-5 justify-content-center">
+      <%= link_to places_path do %>
+        <button class="btn btn-primary" data-turbolinks="false">Register for free</button>
+      <% end %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col col-md-1">
+  </div>
+
+</div>

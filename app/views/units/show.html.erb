@@ -1,0 +1,7 @@
+
+<%= @unit.id %>
+<%= @unit.name %>
+
+<% @unit.bottles.each do |bottle| %>
+<h2><%= bottle.wine.name %> <%= bottle.vintage %></h2>
+<% end %>

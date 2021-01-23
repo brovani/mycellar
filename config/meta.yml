@@ -1,0 +1,5 @@
+meta_product_name: 'Automated Cellar'
+meta_title: 'Bringing Automation to Cellar Management'
+meta_description: 'Cellar Management in the 21st century'
+meta_image: 'cover.png' # should exist in `app/assets/images/`
+# twitter_account: '@product_twitter_account' # required for Twitter Cards

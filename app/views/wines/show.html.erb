@@ -1,0 +1,43 @@
+
+<div class="container">
+
+    <div class="border border-primary justify-content-center">
+    <h2> <%= @wine.name %> </h2>
+    <h3> <%= @wine.country %> </h3>
+    <h3> <%= @wine.region %> </h3>
+    <h3> <%= @wine.subregion %> </h3>
+    </div>
+
+    <div class="border border-danger">
+            <table class="table-sm table-striped table-hover">
+            <thead>
+                <tr>
+                <th scope="col"> hv </th>
+                <th scope="col"> b </th>
+                <th scope="col"> M </th>
+                <th scope="col"> case </th>
+                <th scope="col"> Local Cellars </th>
+                <th scope="col"> Remote Cellars </th>
+                <th scope="col"> Tasting Notes </th>
+                </tr>
+            </thead>
+                <tbody>
+                    <% @wine.bottles.each do |bottle| %>
+                    <tr>
+                        <td> <%= bottle.number %> </td>
+                        <td> <%= bottle.size %> </td>
+                        <td> <%= bottle.vintage %> </td>
+                        <td> <%= bottle.unit.place.name if !bottle.unit.place.professional? %> </td>
+                        <td> <%= bottle.unit.place.name if bottle.unit.place.professional? %> </td>
+                        <td>  </td>
+                    </tr>
+                    <%end%>
+            </tbody>
+            </table>
+    </div>
+
+    <div class="border border-danger">
+    Wine history (All the movements in an out of the cellar)
+    </div>
+    
+</div>

@@ -1,0 +1,14 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 mx-auto form-login mb-5">
+      <h2>Here are all the bottles</h2>
+        <% @bottles.each do |bottle| %>
+        <h2><%= bottle.wine.name %> <%= bottle.vintage %></h2>
+        <%= link_to "More info", bottle_path(bottle), class: "btn btn-outline-secondary" %>
+        <%= link_to "Remove bottle", bottle_path(bottle), method: :delete,  data: { confirm: "Are you sure?"}, class: "btn btn-outline-secondary" %>
+        <% end %>
+        <br>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,225 @@
+
+<div class="container">
+
+<%= link_to "Back to all storages", places_path, class: "btn btn-outline-secondary" %>
+<h2> <%= @place.name %> </h2>
+
+    <% if @place.professional? %>
+    <div class="border border-danger">
+        <table class="table-sm table-striped table-hover">
+        <thead>
+            <tr>
+            <th scope="col"> Rotation </th>
+            <th scope="col"> Tax Status </th>
+            <th scope="col"> Bottles </th>
+            <th scope="col"> Packaging </th>
+            <th scope="col"> Wine </th>
+            <th scope="col"> Vintage </th>
+            <th scope="col"> Price paid </th>
+            <th scope="col"> Value </th>
+            </tr>
+        </thead>
+            <tbody>
+            <% @place.units.each do |unit| %>
+                <% @unit = unit %>
+                    <tr>
+                    <td> <%= @unit.rotation %> </td>
+                    <td> <%= @unit.tax_status %> </td>
+                    <td> <%= @unit.bottles_inside %> </td>
+                    <td> <%= @unit.capacity%>b <%= 'owc' if @unit.owc %> <%= 'oc' if @unit.oc %></td>
+                    <td> <%= @unit.bottles.first.wine.name %> </td>
+                    <td> <%= @unit.bottles.first.vintage %> </td>
+                    <td> <%= price_paid_unit(@unit) %> </td>
+                    <td>  </td>
+                    </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div >
+    <%end%>
+
+    <% if !@place.professional? %>
+        <% @place.units.each do |unit| %>
+            <% @unit = unit %>
+            
+            <% if unit.fridge? %>
+                <div class="border border-danger"> 
+                <h3> <%= @unit.name %> </h3>
+                <h3> <%= @unit.bottles_inside %> bottles </h3>
+                <h3> <%= @unit.capacity - @unit.bottles_inside %> empty spaces </h3>
+                <table class="table-sm table-striped table-hover">
+                <thead>
+                <tr>
+                <th scope="col"> hb </th>
+                <th scope="col"> b </th>
+                <th scope="col"> M </th>
+                <th scope="col"> DM </th>
+                <th scope="col"> Name </th>
+                <th scope="col"> Vintage </th>
+                <th scope="col"> Date in </th>
+                <th scope="col"> Original Value </th>
+                <th scope="col"> Latest Value </th>
+                <th scope="col"> Actions </th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @unit.bottles.each do |bottle| %>
+                <% @bottle = bottle %>
+                <tr>
+                <td> <%= bottle.number if bottle.half_bottle? %> </td>
+                <td> <%= bottle.number if bottle.bottle? %> </td>
+                <td> <%= bottle.number if bottle.magnum? %> </td>
+                <td> <%= bottle.number if bottle.double_magnum? %> </td>
+                <td> <%= bottle.wine.name %> </td>
+                <td> <%= bottle.vintage %> </td>
+                <td> <%= bottle.date_in %> </td>
+                <td> <%= bottle.post_tax_cost %> </td>
+                <td> <%= link_to 'Update', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%> 
+                 <%= link_to 'Drink', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                 <%= link_to 'Sale', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                <%= link_to 'Transfer', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                </td>
+                </tr>
+                <% end %>
+                </tbody>
+                </table>
+                </div>
+
+            <% elsif unit.rack? %> 
+                <div class="border border-danger">
+                <h3> <%= @unit.name %> </h3>
+                <h3> <%= @unit.bottles_inside %> bottles </h3>
+                <h3> <%= @unit.capacity - @unit.bottles_inside %> empty spaces </h3>
+                <table class="table-sm table-striped table-hover">
+                <thead>
+                <tr>
+                <th scope="col"> hb </th>
+                <th scope="col"> b </th>
+                <th scope="col"> M </th>
+                <th scope="col"> DM </th>
+                <th scope="col"> Name </th>
+                <th scope="col"> Vintage </th>
+                <th scope="col"> Date in </th>
+                <th scope="col"> Original Value </th>
+                <th scope="col"> Latest Value </th>
+                <th scope="col"> Actions </th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @unit.bottles.each do |bottle| %>
+                <% @bottle = bottle %>  
+                <tr>
+                <td> <%= bottle.number if bottle.half_bottle? %> </td>
+                <td> <%= bottle.number if bottle.bottle? %> </td>
+                <td> <%= bottle.number if bottle.magnum? %> </td>
+                <td> <%= bottle.number if bottle.double_magnum? %> </td>
+                <td> <%= bottle.wine.name %> </td>
+                <td> <%= bottle.vintage %> </td>
+                <td> <%= bottle.date_in %> </td>
+                <td> <%= bottle.post_tax_cost %> </td>
+                <td>  </td>
+                <td> <%= link_to 'Update', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%> 
+                 <%= link_to 'Drink', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                 <%= link_to 'Sale', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                <%= link_to 'Transfer', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                </td>
+                </tr>
+                <% end %>
+                </tbody>
+                </table>
+                <%= link_to "Add Bottles", new_bottle_path(@bottle), class: "btn btn-outline-secondary" %>
+                </div>
+
+            <% elsif unit.packaging? %>
+                <div class="border border-danger">
+                <h3> Cases </h3>
+                <h3>  </h3>
+                <table class="table-sm table-striped table-hover">
+                <thead>
+                <tr>
+                <th scope="col"> hb </th>
+                <th scope="col"> b </th>
+                <th scope="col"> M </th>
+                <th scope="col"> DM </th>
+                <th scope="col"> Name </th>
+                <th scope="col"> Vintage </th>
+                <th scope="col"> Date in </th>
+                <th scope="col"> Original Value </th>
+                <th scope="col"> Latest Value </th>
+                <th scope="col"> Actions </th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @unit.bottles.each do |bottle| %>
+                <% @bottle = bottle %>  
+                <tr>
+                <td> <%= bottle.number if bottle.half_bottle? %> </td>
+                <td> <%= bottle.number if bottle.bottle? %> </td>
+                <td> <%= bottle.number if bottle.magnum? %> </td>
+                <td> <%= bottle.number if bottle.double_magnum? %> </td>
+                <td> <%= bottle.wine.name %> </td>
+                <td> <%= bottle.vintage %> </td>
+                <td> <%= bottle.date_in %> </td>
+                <td> <%= bottle.post_tax_cost %> </td>
+                <td>  </td>
+                <td> <%= link_to 'Update', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%> 
+                 <%= link_to 'Drink', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                 <%= link_to 'Sale', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                <%= link_to 'Transfer', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                </td>
+                </tr>
+                <% end %>
+                </tbody>
+                </table>
+                <%= link_to "Add Bottles", new_bottle_path(@bottle), class: "btn btn-outline-secondary" %>
+                </div>
+
+            <% elsif !unit.packaging? %>
+                <div class="border border-danger">
+                <h3> Bottles </h3>
+                <table class="table-sm table-striped table-hover">
+                <thead>
+                <tr>
+                <th scope="col"> hb </th>
+                <th scope="col"> b </th>
+                <th scope="col"> M </th>
+                <th scope="col"> DM </th>
+                <th scope="col"> Name </th>
+                <th scope="col"> Vintage </th>
+                <th scope="col"> Date in </th>
+                <th scope="col"> Original Value </th>
+                <th scope="col"> Latest Value </th>
+                <th scope="col"> Actions </th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @unit.bottles.each do |bottle| %>
+                <% @bottle = bottle %>  
+                <tr>
+                <td> <%= bottle.number if bottle.half_bottle? %> </td>
+                <td> <%= bottle.number if bottle.bottle? %> </td>
+                <td> <%= bottle.number if bottle.magnum? %> </td>
+                <td> <%= bottle.number if bottle.double_magnum? %> </td>
+                <td> <%= bottle.wine.name %> </td>
+                <td> <%= bottle.vintage %> </td>
+                <td> <%= bottle.date_in %> </td>
+                <td> <%= bottle.post_tax_cost %> </td>
+                <td>  </td>
+                <td> <%= link_to 'Update', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%> 
+                 <%= link_to 'Drink', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                 <%= link_to 'Sale', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                <%= link_to 'Transfer', edit_bottle_path(@bottle), class: "btn btn-outline-secondary"%>
+                </td>
+                </tr>
+                <% end %>
+                </tbody>
+                </table>
+                <%= link_to "Add Bottles", new_bottle_path(@bottle), class: "btn btn-outline-secondary" %>
+                </div>
+
+            <% end %>
+
+        <% end %>
+    <%end%>
+
+</div>
